@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/south-street/jquery-ui.css"/>
+    <script>
+      $(document).ready(function(){
+        $.extend({
+            confirme: function (opcoes){
+                var defaults  = {width:300,titulo:'Confirme',botoes:{},html:''}
+                var configs   = $.extend(defaults,opcoes);
+
+                var div = $('<div>').appendTo('body');
+                div.dialog({
+                    modal: true,
+                    width: configs.width,
+                    draggable: true,
+                    resizable: false,
+                    title: configs.titulo,
+                    buttons: configs.botoes,
+                    close:function(){
+                      div.dialog('destroy');
+                      div.remove();
+                    }
+                });
+                div.html(configs.html);
+            }
+        });
+
+        $(':button').click(function(){
+            $.confirme({
+                html:'Deseja mesmo excluir o item?',
+                botoes:{
+                  'Fechar':function(){
+                    $(this).dialog('close');
+                  },
+                  'Adicionar':function(){
+                    alert('Acao Adicionar');
+                  }
+                }
+            });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="divAlerta"></div>
+    <input type="button" id="add" value="mostrar"><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </body>
+</html>
