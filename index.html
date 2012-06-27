@@ -5,28 +5,6 @@
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/south-street/jquery-ui.css"/>
     <script>
       $(document).ready(function(){
-        $.extend({
-            confirme: function (opcoes){
-                var defaults  = {width:300,titulo:'Confirme',botoes:{},html:''}
-                var configs   = $.extend(defaults,opcoes);
-
-                var div = $('<div>').appendTo('body');
-                div.dialog({
-                    modal: true,
-                    width: configs.width,
-                    draggable: true,
-                    resizable: false,
-                    title: configs.titulo,
-                    buttons: configs.botoes,
-                    close:function(){
-                      div.dialog('destroy');
-                      div.remove();
-                    }
-                });
-                div.html(configs.html);
-            }
-        });
-
         $(':button').click(function(){
             $.confirme({
                 html:'Deseja mesmo excluir o item?',
